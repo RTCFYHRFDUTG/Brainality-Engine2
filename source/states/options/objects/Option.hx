@@ -13,12 +13,10 @@ enum OptionType {
 }
 
 typedef OptionData = {
-    var title:String;
-    var description:String;
-    var save:String;
-    var type:OptionType;
-    @:optional var min:Float;
-    @:optional var max:Float;
+    var save:String,
+    var type:OptionType,
+    @:optional var min:Float,
+    @:optional var max:Float
 }
 
 class Option extends FlxSprite
@@ -27,10 +25,9 @@ class Option extends FlxSprite
     public var index:Int;
     public var value:Dynamic;
 
-    override public function new(data:OptionData, index:Int)
+    override public function new(data:OptionData)
     {
         this.data = data;
-        this.index = index;
 
         super();
 

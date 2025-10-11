@@ -14,17 +14,13 @@ class OptionsMenu extends SelectionState
         menuItems = [
             ['Gameplay', function():Void {
                 FlxG.switchState(()->new GameplayOptionsState());
+            }],
+            ['Graphics', function():Void {
+                trace('this ones a test lol');
             }]
         ];
 
         createMenu();
         bg.color = 0xff5ce9;
-    }
-
-    override function update(elapsed:Float)
-    {
-        super.update(elapsed);
-
-        if (controls.BACK) FlxG.switchState(()->new MainMenuState());
     }
 }

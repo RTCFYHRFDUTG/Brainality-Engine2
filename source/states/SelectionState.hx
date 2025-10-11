@@ -24,6 +24,10 @@ class SelectionState extends MusicBeatState
 
 	var bg:FlxSprite = null;
 
+	var backAction = function() {
+		FlxG.switchState(new MainMenuState());
+	};
+
     public function createMenu()
     {
 		bg = new FlxSprite().loadGraphic("assets/images/menuDesat.png");
@@ -33,8 +37,15 @@ class SelectionState extends MusicBeatState
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
 
-		changeSelection();
+		for (i in 0...menuItems.length)
+		{
+			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i][0], true, false);
+			songText.isMenuItem = true;
+			songText.targetY = i;
+			grpMenuShit.add(songText);
+		}
 
+		changeSelection();
     }
 
 	public function new()
@@ -49,6 +60,7 @@ class SelectionState extends MusicBeatState
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
 		var accepted = controls.ACCEPT;
+		var back = controls.BACK;
 
 		if (upP)
 		{
@@ -65,6 +77,8 @@ class SelectionState extends MusicBeatState
             var action:Void->Void = func;
             action();
         }
+
+		if (back) backAction();
 
 
 		if (FlxG.keys.justPressed.J)
