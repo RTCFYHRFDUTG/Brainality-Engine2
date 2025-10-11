@@ -22,11 +22,11 @@ class SelectionState extends MusicBeatState
 
 	var curSelected:Int = 0;
 
-	var bg:FlxSprite;
+	var bg:FlxSprite = null;
 
     public function createMenu()
     {
-		var bg = new FlxSprite().loadGraphic("assets/images/menuDesat");
+		bg = new FlxSprite().loadGraphic("assets/images/menuDesat.png");
 		bg.scrollFactor.set();
 		add(bg);
 
