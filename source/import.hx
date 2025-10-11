@@ -1,3 +1,8 @@
 import flixel.*;
-import polymod.Polymod;
 import openfl.utils.Assets;
+import backend.Paths;
+
+#if MODS_ALLOWED
+import backend.Mods;
+import polymod.Polymod;
+#end

@@ -42,8 +42,13 @@ import openfl.filters.ShaderFilter;
 import PauseSubstate; // delete this if you have issues with compiling
 
 import backend.ClientPrefs;
+import backend.Paths;
 
 import objects.Character;
+
+#if HSCRIPT_ALLOWED
+import scripting.*;
+#end
 
 using StringTools;
 
@@ -133,15 +138,35 @@ class PlayState extends MusicBeatState
 
 	var inCutscene:Bool = false;
 
+	var scripts:Array<HScript> = new Array();
+
 	override public function new()
 	{
 		PlayState.instance = this;
+
+		var coolScripts = Mods.getMods();
+
+		for (script in coolScripts)
+		{
+			scripts.push(new HScript(script));
+		}
+
 		super();
+	}
+
+	private function callFunction(func:String, args:Array<Dynamic> = null)
+	{
+		if (args == null) args = [];
+		for (script in scripts)
+		{
+			script.call(func, args);
+		}
 	}
 
 	override public function create()
 	{
 		// var gameCam:FlxCamera = FlxG.camera;
+		//callFunction('create');
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
@@ -856,6 +881,8 @@ class PlayState extends MusicBeatState
 				remove(black);
 			}
 		});
+
+		//callFunction('createPost');
 	}
 
 	var startTimer:FlxTimer;
@@ -985,7 +1012,13 @@ class PlayState extends MusicBeatState
 		lastReportedPlayheadPosition = 0;
 
 		if (!paused)
-			FlxG.sound.playMusic("assets/music/" + SONG.song + "_Inst" + TitleState.soundExt, 1, false);
+			try {
+				FlxG.sound.playMusic(Paths.getSong(SONG.song), 1, false);
+			} catch(e:Dynamic)
+			{
+				trace('Error loading inst: ${e}');
+				FlxG.sound.playMusic(Paths.getSong('test'), 1, false);
+			}
 		FlxG.sound.music.onComplete = endSong;
 		vocals.play();
 	}
@@ -1002,7 +1035,14 @@ class PlayState extends MusicBeatState
 		curSong = songData.song;
 
 		if (SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded("assets/music/" + curSong + "_Voices" + TitleState.soundExt);
+			try
+			{
+				vocals = new FlxSound().loadEmbedded(Paths.getSong(curSong, "Voices"));
+			} catch(e:Dynamic)
+			{
+				trace('Error loading voices: ${e}');
+				vocals = new FlxSound();
+			}
 		else
 			vocals = new FlxSound();
 
@@ -1262,6 +1302,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		//callFunction('onUpdate', [elapsed]);
 		#if !debug
 		perfectMode = false;
 		#end
@@ -1612,10 +1653,14 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
+
+		//callFunction('onUpdatePost', [elapsed]);
 	}
 
 	function endSong():Void
 	{
+		//callFunction('onEndSong');
+
 		canPause = false;
 		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
@@ -2161,6 +2206,12 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	override function destroy()
+	{
+		//callFunction('onDestroy');
+		super.destroy();
+	}
+
 	var fastCarCanDrive:Bool = true;
 
 	function resetFastCar():Void
@@ -2272,6 +2323,8 @@ class PlayState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
+
+		//callFunction('onBeatHit');
 
 		if (generatedMusic)
 		{

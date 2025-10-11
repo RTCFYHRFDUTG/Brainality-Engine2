@@ -1,0 +1,6 @@
+import PlayState;
+
+function onUpdatePost(elapsed)
+{
+    PlayState.instance.health = 2;
+}

@@ -17,7 +17,6 @@ import flixel.util.FlxTimer;
 import states.options.OptionsMenu;
 import hxvlc.flixel.FlxVideoSprite;
 import EditorMenuSubState;
-
 using StringTools;
 
 class MainMenuState extends MusicBeatState
@@ -26,12 +25,11 @@ class MainMenuState extends MusicBeatState
 	var inEditor:Bool = false;
 	var menuItems:FlxTypedGroup<FlxSprite>;
     var stat = new FlxVideoSprite(320, 180);
-	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
-	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay'];
-	#end
 
+	public static var version = '0.0.1';
+
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'mods', 'options'];
+	
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
@@ -73,14 +71,13 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		var tex = FlxAtlasFrames.fromSparrow('assets/images/FNF_main_menu_assets.png', 'assets/images/FNF_main_menu_assets.xml');
-
 		for (i in 0...optionShit.length)
 		{
+			var tex = FlxAtlasFrames.fromSparrow('assets/images/main_menu/menu_${optionShit[i].replace(' ', '_')}.png', 'assets/images/main_menu/menu_${optionShit[i].replace(' ', '_')}.xml');
 			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
 			menuItem.frames = tex;
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
+			menuItem.animation.addByPrefix('${optionShit[i]} idle', "idle", 24);
+			menuItem.animation.addByPrefix('${optionShit[i]} selected', "selected", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
@@ -91,7 +88,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 36, 0, 'Brainaility Engine v${MainMenuState.version}\nFriday Night Funkin\' v' + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -195,13 +192,9 @@ class MainMenuState extends MusicBeatState
 									#end
 									
 								case 'options':
-										stat.load("assets/static-transition.mkv");  
-    
-								stat.scale.set(2, 2);
-    add(stat);
-	stat.play();
-									
-									
+									FlxG.switchState(new OptionsMenu());
+									trace("Options Selected");
+					
 							}
 						});
 					}

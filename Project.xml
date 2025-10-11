@@ -48,7 +48,7 @@
 
 	<classpath name="source" />
 
-	<assets path="assets" />
+	<assets path="assets" rename="assets"/>
 	<assets path='example_mods' rename='mods' embed='false'/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='art/brainalityReadme.txt' rename='readme.txt' />
@@ -59,10 +59,6 @@
 	
 	<!-- <library name="noPreload" preload='false'/> -->
 	<!-- <library name="noPreload"/> -->
-	<assets path="assets/music" include="*.mp3" if="web"/>
-	<assets path="assets/music" include="*.ogg" unless="web"/>
-	<assets path="assets/sounds" include="*.mp3" if="web" />
-	<assets path="assets/sounds" include="*.ogg" unless="web" />
 
 	<assets path="CHANGELOG.md" rename='changelog.txt'/>
 

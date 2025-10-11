@@ -2,17 +2,17 @@ package backend;
 
 import backend.animation.AnimationData;
 
-#if sys
-import sys.FileSystem;
-import sys.io.File;
-#end
-
 import haxe.Json;
 
 #if sys
 import sys.FileSystem;
 import sys.io.File;
 #end
+
+#if MODS_ALLOWED
+import backend.Mods;
+#end
+
 typedef CharacterData = {
     var image:String;
     var x:Float;
@@ -47,7 +47,7 @@ class CharacterUtil
         };
     }
 
-    public static function getCharacters():Array<String> {
+    public static function getCharacters(getFromMods=true):Array<String> {
         #if sys
         var folderPath = "assets/characters/";
         var characters:Array<String> = [];
@@ -59,6 +59,30 @@ class CharacterUtil
                 characters.push(fileName.substr(0, fileName.length - 5));
             }
         }
+
+        #if MODS_ALLOWED
+        if (getFromMods)
+        {
+            var mods = Mods.getMods();
+            trace('loading characters from mods: ' + mods);
+            for (mod in mods)
+            {
+                folderPath = Mods.modsFolder + mod + "/characters";
+
+                trace(folderPath);
+
+                if (FileSystem.exists(folderPath))
+                {
+                    for (fileName in FileSystem.readDirectory(folderPath)) {
+                        if (StringTools.endsWith(fileName, ".json")) {
+                            characters.push(fileName.substr(0, fileName.length - 5));
+                        }
+                    }
+                }
+            }
+        }
+        #end
+
         return characters;
 
         #elseif html5

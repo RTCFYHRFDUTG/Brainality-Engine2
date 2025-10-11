@@ -12,6 +12,8 @@ import lime.utils.Assets;
 
 import HealthIcon;
 
+import backend.Paths;
+
 using StringTools;
 
 class FreeplayState extends MusicBeatState
@@ -263,12 +265,9 @@ class FreeplayState extends MusicBeatState
 
 		// selector.y = (70 * curSelected) + 30;
 
-		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected], curDifficulty);
-		// lerpScore = 0;
-		#end
 
-		FlxG.sound.playMusic('assets/music/' + songs[curSelected] + "_Inst" + TitleState.soundExt, 0);
+		FlxG.sound.playMusic(Paths.getSong(songs[curSelected]), 0);
 
 		var bullShit:Int = 0;
 
