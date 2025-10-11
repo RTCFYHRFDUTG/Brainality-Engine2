@@ -82,11 +82,22 @@ class ClientPrefs
     public static function getPrefs()
     {
         addSaveVariable("ghostTap", true, "Ghost Tapping", "You don't get a miss from pressing keys while there aren't notes!");
+		addSaveVariable("hideOppo", false, "Hide Opponent Notes", "If checked, Opponent Notes Get Hidden");
         addSaveVariable("downscroll", false, "Downscroll", "Notes go down instead of up. Simple enough.");
         addSaveVariable("middleScroll", false, "Middlescroll", "Player notes get centered");
         addSaveVariable("opponentNoteOpacity", 1, "Opponent Note Opacity", "Controls how visibles the opponents notes are.");
         addSaveVariable("fps", true, "Show FPS", "If checked, FPS will be shown.");
     }
+
+	inline public static function getName(key:String):String
+	{
+		return display.get(key)[0];
+	}
+
+	inline public static function getDesc(key:String):String
+	{
+		return display.get(key)[1];
+	}
 
     inline public static function getSaveVariable(key:String)
     {

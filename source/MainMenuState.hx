@@ -14,7 +14,8 @@ import flixel.util.FlxColor;
 ////import io.newgrounds.NG;
 import lime.app.Application;
 import flixel.util.FlxTimer;
-import states.options.OptionsMenu;
+//import states.options.OptionsMenu;
+import states.options.PlaceholderOptionsState;
 import hxvlc.flixel.FlxVideoSprite;
 import EditorMenuSubState;
 using StringTools;
@@ -192,7 +193,7 @@ class MainMenuState extends MusicBeatState
 									#end
 									
 								case 'options':
-									FlxG.switchState(new OptionsMenu());
+									FlxG.switchState(new PlaceholderOptionsState());
 									trace("Options Selected");
 					
 							}

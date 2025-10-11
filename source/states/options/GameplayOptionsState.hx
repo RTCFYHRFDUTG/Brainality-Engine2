@@ -1,15 +1,15 @@
 package states.options;
 
-import states.options.OptionsUtil;
+import states.options.objects.Option.OptionType;
 class GameplayOptionsState extends BaseOptionsState
 {
     override public function new()
     {
-        var option = createOption({
+        var option = OptionsUtil.createOption(
             "downscroll",
-            BOOL
-        });
-        options.push(options);
+            OptionType.BOOL
+        );
+        options.push(option);
 
         super();
     }

@@ -13,10 +13,10 @@ enum OptionType {
 }
 
 typedef OptionData = {
-    var save:String,
-    var type:OptionType,
-    @:optional var min:Float,
-    @:optional var max:Float
+    var save:String;
+    var type:OptionType;
+    @:optional var min:Float;
+    @:optional var max:Float;
 }
 
 class Option extends FlxSprite

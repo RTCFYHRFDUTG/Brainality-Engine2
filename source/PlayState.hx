@@ -1114,6 +1114,7 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
+					if (ClientPrefs.getSaveVariable('hideOppo')) swagNote.alpha = 0;
 				}
 			}
 			daBeats += 1;
@@ -1226,6 +1227,9 @@ class PlayState extends MusicBeatState
 			if (player == 1)
 			{
 				playerStrums.add(babyArrow);
+			} else
+			{
+				if (ClientPrefs.getSaveVariable('hideOppo')) babyArrow.alpha = 0;
 			}
 
 			babyArrow.animation.play('static');
