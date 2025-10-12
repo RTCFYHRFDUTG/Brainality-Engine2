@@ -25,8 +25,8 @@ jobs:
         run: |
           mkdir haxelib
           haxelib setup C:/haxelib
-          haxelib install hxcpp > /dev/null --quiet
-          .\"setup/windows.bat"
+          haxelib install hxcpp
+          .\"docs/setup/windows.bat"
         shell: cmd
       - name: Skip SScript setup mode
         run: echo 'oy9:showMacroty8:loopCosti25y10:includeAllfg' >> %USERPROFILE%/settings.cocoa
