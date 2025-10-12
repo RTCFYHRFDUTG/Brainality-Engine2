@@ -39,7 +39,7 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 
-import PauseSubstate; // delete this if you have issues with compiling
+import PauseSubState; // delete this if you have issues with compiling
 
 import backend.ClientPrefs;
 import backend.Paths;
