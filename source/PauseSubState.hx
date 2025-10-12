@@ -3,7 +3,7 @@ package;
 import SelectionSubstate;
 import DifficultySubstate;
 import flixel.FlxG;
-class PauseSubstate extends SelectionSubstate
+class PauseSubState extends SelectionSubstate
 {
     override public function new(x:Float, y:Float)
     {
