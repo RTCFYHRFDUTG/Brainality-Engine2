@@ -27,7 +27,7 @@ using StringTools;
 
 class TitleState extends MusicBeatState
 {
-	static var initialized:Bool = false;
+	static public var initialized:Bool = false;
 	static public var soundExt:String = ".mp3";
 
 	var blackScreen:FlxSprite;

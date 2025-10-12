@@ -3,12 +3,7 @@ package states;
 import flixel.FlxG;
 import states.SelectionState;
 import backend.Mods;
-import CoolUtil;
-
-#if MODS_ALLOWED
-import polymod.Polymod;
-#end
-
+import flixel.util.FlxTimer;
 class ModsMenuState extends SelectionState
 {
     override public function new()
@@ -16,21 +11,24 @@ class ModsMenuState extends SelectionState
         super();
 
         menuItems = new Array();
-        var coolMeta:Array<ModMetadata> = Mods.scan();
+        var mods:Array<String> = Mods.getMods();
 
-        for (mod in getMods())
+        for (modName in mods)
         {
-            menuItems.push([title,
+            var capturedName = modName;
+            menuItems.push([capturedName,
                 function():Void {
                     try {
-                        trace("Selected Mod: " + );
-                        if (capturedMeta.title != "INVALID MOD")
-                        {
-                            sys.io.File.saveContent("assets/modsList.txt", capturedMeta.title);
-                            FlxG.resetGame();
-                        }
+                        trace("Selected Mod: " + capturedName);
+                        var results = Polymod.init({
+                            modRoot: Mods.modsFolder,
+                            dirs: [capturedName]
+                        });
                     } catch(e:Dynamic) {
-                        trace("Error handling mod: " + capturedMeta.title + " -> " + e);
+                        trace("Error handling mod: " + capturedName + " -> " + e);
+                        TitleState.initialized = false;
+                        
+                        FlxG.switchState(new TitleState());
                     }
                 }
             ]);
