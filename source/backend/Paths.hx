@@ -19,5 +19,15 @@ class Paths
         return v;
     }
 
+    public static function getSpritesheet(image:String):Array<String>
+    {
+        var path = 'assets/images/${image}';
+        trace('loading from ${path}');
+        return [path + ".png", path + ".xml"];
+    }
+
+    public inline static function getImage(image):String
+        return getSpritesheet(image)[0];
+
     public inline static function formatSong(song:String):String return StringTools.replace(song.toLowerCase(), ' ', '-');
 }

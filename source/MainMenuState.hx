@@ -16,6 +16,7 @@ import lime.app.Application;
 import flixel.util.FlxTimer;
 //import states.options.OptionsMenu;
 import states.options.PlaceholderOptionsState;
+import states.ModsMenuState;
 import hxvlc.flixel.FlxVideoSprite;
 import EditorMenuSubState;
 using StringTools;
@@ -29,7 +30,13 @@ class MainMenuState extends MusicBeatState
 
 	public static var version = '0.0.1';
 
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'mods', 'options'];
+	var optionShit:Array<String> = ['story mode', 
+									'freeplay', 
+									#if MODS_ALLOWED
+									'mods', 
+									#end
+									'options'
+								];
 	
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
@@ -74,11 +81,12 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
-			var tex = FlxAtlasFrames.fromSparrow('assets/images/main_menu/menu_${optionShit[i].replace(' ', '_')}.png', 'assets/images/main_menu/menu_${optionShit[i].replace(' ', '_')}.xml');
+			var img = Paths.getSpritesheet("main_menu/menu_" + optionShit[i].replace(' ', '_'));
+			var tex = FlxAtlasFrames.fromSparrow(img[0], img[1]);
 			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
 			menuItem.frames = tex;
-			menuItem.animation.addByPrefix('${optionShit[i]} idle', "idle", 24);
-			menuItem.animation.addByPrefix('${optionShit[i]} selected', "selected", 24);
+			menuItem.animation.addByPrefix('idle', '${optionShit[i]} idle', 24);
+			menuItem.animation.addByPrefix('selected', '${optionShit[i]} selected', 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
@@ -195,7 +203,12 @@ class MainMenuState extends MusicBeatState
 								case 'options':
 									FlxG.switchState(new PlaceholderOptionsState());
 									trace("Options Selected");
-					
+
+								#if MODS_ALLOWED //putting this in compilation conditionals for minor optimiization, in reality it's probably not much though.
+								case 'mods':
+									FlxG.switchState(new ModsMenuState());
+									trace("Options Selected");
+								#end
 							}
 						});
 					}

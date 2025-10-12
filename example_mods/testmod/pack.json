@@ -1,7 +1,0 @@
-{
-    "name": "Test Mod",
-    "description": "Simple Test Mod",
-    "window": "Test Mod",
-    "global": true,
-    "loaderVersion": "0.1.0"
-}

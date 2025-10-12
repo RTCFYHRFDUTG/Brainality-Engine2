@@ -2,6 +2,9 @@ package backend;
 
 import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.keyboard.FlxKey;
+
+//thanks psych i'm too lazy to code keybinds myself
+//code from Controls.hx also stolen from psych engine
 class ClientPrefs
 {
     public static var data:Map<String, Dynamic> = new Map();

@@ -1,0 +1,1 @@
+Ignore meta.json, but don't delete it, unless you plan on removing mod support, then it should be fine.
