@@ -1,7 +1,6 @@
 package;
 
 import SelectionSubstate;
-import DifficultySubstate;
 import flixel.FlxG;
 class PauseSubState extends SelectionSubstate
 {
@@ -18,6 +17,9 @@ class PauseSubState extends SelectionSubstate
             }],
             ['Exit to menu', function():Void {
                 FlxG.switchState(new MainMenuState());
+            }],
+            ['Exit game', function():Void {
+                Sys.exit(0);
             }]
         ];
 
