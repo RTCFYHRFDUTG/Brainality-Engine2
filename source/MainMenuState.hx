@@ -119,7 +119,7 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.keys.justPressed.SEVEN)
 		{
 			inEditor = true;
-			openSubState(new EditorMenuSubState(50, 50));
+			openSubState(new EditorMenuSubState(75, 35));
 		}
 
 		if (inEditor)
