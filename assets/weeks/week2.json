@@ -1,0 +1,21 @@
+{
+    "name": "Week 2",
+    "description": "SPOOKY MONTH",
+    "songs": [
+        {
+            "name": "Spookeez",
+            "icon": "spooky",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "South",
+            "icon": "spooky",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Monster",
+            "icon": "monster",
+            "rgb": [255, 255, 255]
+        }
+    ]
+}

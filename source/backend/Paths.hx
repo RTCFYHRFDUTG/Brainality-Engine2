@@ -2,7 +2,7 @@ package backend;
 
 import StringTools;
 import sys.FileSystem;
-
+import haxe.Json;
 class Paths
 {
     public static function getSong(songName:String, type:String = 'Inst', ext:String="ogg"):String 
@@ -24,6 +24,11 @@ class Paths
         var path = 'assets/images/${image}';
         trace('loading from ${path}');
         return [path + ".png", path + ".xml"];
+    }
+
+    public static function getJson(path:String):Dynamic
+    {
+        return Json.parse(Assets.getText(path));
     }
 
     public inline static function getImage(image):String

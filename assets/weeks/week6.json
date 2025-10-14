@@ -1,0 +1,21 @@
+{
+    "name": "Week 6",
+    "description": "hating simulator ft. moawling",
+    "songs": [
+        {
+            "name": "Senpai",
+            "icon": "senpai",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Roses",
+            "icon": "senpai",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Thorns",
+            "icon": "spirit",
+            "rgb": [255, 255, 255]
+        }
+    ]
+}

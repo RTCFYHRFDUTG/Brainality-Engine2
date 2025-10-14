@@ -1,0 +1,11 @@
+{
+    "name": "Tutorial",
+    "description": "TUTORIAL",
+    "songs": [
+        {
+            "name": "Tutorial",
+            "icon": "gf",
+            "rgb": [255, 255, 255]
+        }
+    ]
+}

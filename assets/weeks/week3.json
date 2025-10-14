@@ -1,0 +1,21 @@
+{
+    "name": "Week 3",
+    "description": "PICO",
+    "songs": [
+        {
+            "name": "Pico",
+            "icon": "pico",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Philly Nice",
+            "icon": "pico",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "blammed",
+            "icon": "pico",
+            "rgb": [255, 255, 255]
+        }
+    ]
+}

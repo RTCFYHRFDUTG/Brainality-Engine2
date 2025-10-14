@@ -1,0 +1,21 @@
+{
+    "name": "Week 5",
+    "description": "RED SNOW",
+    "songs": [
+        {
+            "name": "Cocoa",
+            "icon": "parents",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Eggnog",
+            "icon": "parents",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Winter Horrorland",
+            "icon": "monster",
+            "rgb": [255, 255, 255]
+        }
+    ]
+}

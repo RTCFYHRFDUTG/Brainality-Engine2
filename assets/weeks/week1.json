@@ -1,0 +1,21 @@
+{
+    "name": "Week 1",
+    "description": "DADDY DEAREST",
+    "songs": [
+        {
+            "name": "Bopeebo",
+            "icon": "dad",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Fresh",
+            "icon": "dad",
+            "rgb": [255, 255, 255]
+        },
+        {
+            "name": "Dadbattle",
+            "icon": "dad",
+            "rgb": [255, 255, 255]
+        }
+    ]
+}

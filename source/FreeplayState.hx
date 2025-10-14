@@ -13,6 +13,7 @@ import lime.utils.Assets;
 import HealthIcon;
 
 import backend.Paths;
+import backend.Week;
 
 using StringTools;
 
@@ -35,7 +36,16 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		songs = CoolUtil.coolTextFile('assets/data/freeplaySonglist.txt');
+		var coolWeeks = WeekUtil.getWeeks();
+		var strings = CoolUtil.coolTextFile("assets/weeks/weekList.txt");
+
+		var otherWeeks = strings.map(weekName -> WeekUtil.getWeek('assets/weeks/' + weekName + ".json"));
+
+		for (week in otherWeeks) {
+			coolWeeks.remove(week); 
+		}
+
+		var weeks = otherWeeks.concat(coolWeeks);
 
 		/* 
 			if (FlxG.sound.music != null)
@@ -51,51 +61,11 @@ class FreeplayState extends MusicBeatState
 		isDebug = true;
 		#end
 
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
-		{
-			songs.push('Spookeez');
-			songs.push('South');
-			songs.push('Monster');
-		}
-
-		if (StoryMenuState.weekUnlocked[3] || isDebug)
-		{
-			songs.push('Pico');
-			songs.push('Philly');
-			songs.push('Blammed');
-		}
-
-		if (StoryMenuState.weekUnlocked[4] || isDebug)
-		{
-			songs.push('Satin-Panties');
-			songs.push('High');
-			songs.push('Milf');
-		}
-
-		if (StoryMenuState.weekUnlocked[5] || isDebug)
-		{
-			songs.push('Cocoa');
-			songs.push('Eggnog');
-			songs.push('Winter-Horrorland');
-		}
-
-		if (StoryMenuState.weekUnlocked[6] || isDebug)
-		{
-			songs.push('Senpai');
-			songs.push('Roses');
-			songs.push('Thorns');
-			// songs.push('Winter-Horrorland');
-		}
-
-		songs.push('Ugh');
-		songs.push('Guns');
-		songs.push('Stress');
-
 		// LOAD MUSIC
 
 		// LOAD CHARACTERS
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic('assets/images/menuBGBlue.png');
+		var bg:FlxSprite = new FlxSprite().loadGraphic('assets/images/menuDesat.png');
 		add(bg);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
