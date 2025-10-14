@@ -33,7 +33,7 @@ class Main extends Sprite
 	public function new()
 	{
 		#if MODS_ALLOWED
-		var curMods = CoolUtil.coolTextFile('assets/modsList.txt');
+		var curMods = Mods.getMods();
 		trace(curMods);
 		var results = Polymod.init({
 			modRoot: Mods.modsFolder,

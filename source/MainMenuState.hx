@@ -41,6 +41,8 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
+	var bg:FlxSprite;
+
 	override function create()
 	{
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -53,7 +55,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic('assets/images/menuBG.png');
+		bg = new FlxSprite(-80).loadGraphic('assets/images/menuBG.png');
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.18;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
@@ -119,7 +121,7 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.keys.justPressed.SEVEN)
 		{
 			inEditor = true;
-			openSubState(new EditorMenuSubState(75, 35));
+			openSubState(new EditorMenuSubState(camFollow.x, camFollow.y));
 		}
 
 		if (inEditor)
@@ -148,11 +150,6 @@ class MainMenuState extends MusicBeatState
 			if (controls.BACK)
 			{
 				FlxG.switchState(new TitleState());
-			}
-
-			if (FlxG.keys.justPressed.EIGHT)
-			{
-				//FlxG.switchState(new OptionsMenu());
 			}
 
 			if (controls.ACCEPT)

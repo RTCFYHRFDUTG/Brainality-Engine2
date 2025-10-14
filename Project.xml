@@ -38,11 +38,8 @@
 	<define name="CRASH_HANDLER" unless="html5"/>
 	<define name="MODS_ALLOWED" unless="html5"/>
 	<define name="HSCRIPT_ALLOWED" unlesss="html5"/>
-	<!--
-	<define name="DISCORD_ALLOWED" if="desktop"/>
 	
-	Having problems with compiling rn, so i'm commenting this out for now.
-	-->
+	<define name="DISCORD_ALLOWED" if="desktop"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
