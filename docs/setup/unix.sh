@@ -9,4 +9,5 @@ haxelib set polymod git
 haxelib install hxdiscord_rpc 1.3.0
 haxelib set hxdiscord_rpc 1.3.0
 haxelib install hxvlc
+haxelib install hscript
 echo Finished!
