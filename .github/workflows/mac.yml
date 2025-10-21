@@ -21,6 +21,7 @@ jobs:
           mkdir -p ~/haxelib
           haxelib setup ~/haxelib
           haxelib install hxcpp
+          haxelib install hscript
           bash ./docs/setup/mac.sh
 
       - name: Skip SScript setup mode
