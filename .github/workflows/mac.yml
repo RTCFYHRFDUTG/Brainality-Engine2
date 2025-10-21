@@ -22,7 +22,7 @@ jobs:
           haxelib setup ~/haxelib
           haxelib install hxcpp
           haxelib install hscript
-          bash ./docs/setup/mac.sh
+          bash ./docs/setup/unix.sh
 
       - name: Skip SScript setup mode
         run: echo 'oy9:showMacroty8:loopCosti25y10:includeAllfg' >> ~/settings.cocoa
