@@ -148,7 +148,8 @@ class TitleState extends MusicBeatState
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
 		add(titleText);
-
+				//load ClientPrefs BEFORE the game is created, just in case.
+		ClientPrefs.getPrefs();
 		var logo:FlxSprite = new FlxSprite().loadGraphic('assets/images/logo.png');
 		logo.screenCenter();
 		logo.antialiasing = true;
