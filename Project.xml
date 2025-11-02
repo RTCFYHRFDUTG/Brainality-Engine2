@@ -84,7 +84,7 @@
 	<haxelib name="hscript"/>
 	<haxelib name="hscript-iris" />
 	<haxedef name="hscriptPos" value="true" if="MOD_ALLOWED"/>
-	<haxelib name="polymod" if="MODS_ALLOWED"/>
+	<haxelib name="BrainalityMod" if="MODS_ALLOWED"/>
 	<haxelib name="hxdiscord_rpc" />
 
 	<!-- POLYMOD CONFIG -->
