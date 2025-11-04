@@ -24,7 +24,9 @@ class Main extends Sprite
 {
 	public function new()
 	{
+		#if DISCORD_ALLOWED
 		DiscordRPC.init();
+		#end
 		super();
 
 		#if CRASH_HANDLER
