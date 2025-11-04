@@ -17,14 +17,6 @@ import haxe.CallStack;
 import haxe.io.Path;
 #end
 
-#if MODS_ALLOWED
-import polymod.hscript.*;
-import polymod.Polymod;
-import backend.Mods;
-import haxe.Json;
-import backend.Meta;
-#end
-
 #if DISCORD_ALLOWED
 import backend.DiscordRPC;
 #end
@@ -32,40 +24,7 @@ class Main extends Sprite
 {
 	public function new()
 	{
-		#if MODS_ALLOWED
-		var curMods = Mods.getMods();
-		trace(curMods);
-		var results = Polymod.init({
-			modRoot: Mods.modsFolder,
-			dirs: curMods
-		});
-
-		var modIds:Array<String> = results.map(function(m) return m.id);
-		trace("Mods loaded: " + modIds);
-
-		var meta:MetaData = Meta.loadMeta();
-
-		if (meta.windowName != null)
-		{
-			FlxG.stage.window.title = meta.windowName;
-		}
-
-		#if DISCORD_ALLOWED
-		if (meta.discordRPC != null)
-		{
-			DiscordRPC.init(meta.discordRPC);
-		}
-		else
-			DiscordRPC.init();
-
-		#end
-
-		#else
-		#if DISCORD_ALLOWED
 		DiscordRPC.init();
-		#end
-		#end
-
 		super();
 
 		#if CRASH_HANDLER

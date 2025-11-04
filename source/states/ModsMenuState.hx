@@ -20,10 +20,6 @@ class ModsMenuState extends SelectionState
                 function():Void {
                     try {
                         trace("Selected Mod: " + capturedName);
-                        var results = Polymod.init({
-                            modRoot: Mods.modsFolder,
-                            dirs: [capturedName]
-                        });
                     } catch(e:Dynamic) {
                         trace("Error handling mod: " + capturedName + " -> " + e);
                         TitleState.initialized = false;

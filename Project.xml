@@ -39,7 +39,7 @@
 	<define name="MODS_ALLOWED" unless="html5"/>
 	<define name="HSCRIPT_ALLOWED" unlesss="html5"/>
 	
-	<define name="DISCORD_ALLOWED" if="desktop"/>
+	<!-- <define name="DISCORD_ALLOWED" if="desktop"/>-->
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -75,7 +75,7 @@
 	<haxedev set='webgl' />
 
 	<!--In case you want to use the addons package-->
-	<haxelib name="flixel-addons" />
+	<haxelib name="flixel-addons" version="3.3.0"/>
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
@@ -86,14 +86,6 @@
 	<haxedef name="hscriptPos" value="true" if="MOD_ALLOWED"/>
 	<haxelib name="BrainalityMod" if="MODS_ALLOWED"/>
 	<haxelib name="hxdiscord_rpc" />
-
-	<!-- POLYMOD CONFIG -->
-	<section if="MODS_ALLOWED">
-		<define name="POLYMOD_MOD_METADATA_FILE" value="pack.json"/>
-		<define name="POLYMOD_MOD_ICON_FILE" value="pack.png"/>
-		<define name="POLYMOD_DEBUG" value="true"/>
-		<define name="POLYMOD_DEBUG"/>
-	</section>
 
 	<!-- <haxelib name="markdown" /> -->
 	<!-- <haxelib name="HtmlParser" /> -->

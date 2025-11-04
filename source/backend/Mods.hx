@@ -12,37 +12,10 @@ class Mods
     public static var modsFolder = "./mods/";
     public static var apiVersion = "1.0.0";
 
-    public static function scan():Array<ModMetadata>
+    public static function scan():Array<Dynamic>
     {
         var mods = getMods();
-        var finalMods:Array<ModMetadata> = [];
-
-        for (mod in mods)
-        {
-            var path = modsFolder + mod + "/pack.json";
-            if (FileSystem.exists(path))
-            {
-                var content = File.getContent(path);
-                var meta = ModMetadata.fromJsonStr(content);
-                if (meta != null)
-                {
-                    meta.modPath = modsFolder + mod;
-                    finalMods.push(meta);
-                }
-                else
-                {
-                    var invalidMeta = new ModMetadata();
-                    invalidMeta.title = "INVALID MOD";
-                    finalMods.push(invalidMeta);
-                }
-            }
-            else
-            {
-                var invalidMeta = new ModMetadata();
-                invalidMeta.title = "INVALID MOD";
-                finalMods.push(invalidMeta);
-            }
-        }
+        var finalMods:Array<Dynamic> = [];
 
         return finalMods;
     }

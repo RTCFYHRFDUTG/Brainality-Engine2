@@ -4,5 +4,4 @@ import backend.Paths;
 
 #if MODS_ALLOWED
 import backend.Mods;
-import polymod.Polymod;
 #end
