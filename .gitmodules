@@ -1,6 +1,0 @@
-[submodule "mods/assets"]
-	path = mods/assets
-	url = https://github.com/RTCFYHRFDUTG/assets.git
-[submodule "assets"]
-	path = assets
-	url = https://github.com/RTCFYHRFDUTG/assets.git
