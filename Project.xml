@@ -51,7 +51,7 @@
 
 	<assets path="assets" rename="assets"/>
 	<assets path='example_mods' rename='mods' embed='false'/>
-	<assets path='art/readme.txt' rename='do NOT readme.txt' />
+	
 	<assets path='art/brainalityReadme.txt' rename='readme.txt' />
 
 	<assets path='platformspecific/html5/assets' rename="assets" if="html5"/>
