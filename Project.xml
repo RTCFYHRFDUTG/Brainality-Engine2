@@ -86,7 +86,7 @@
 	<haxedef name="hscriptPos" value="true" if="MOD_ALLOWED"/>
 	<haxelib name="BrainalityMod" if="MODS_ALLOWED"/>
 	<haxelib name="hxdiscord_rpc" />
-
+	<haxelib name="hxvlc" />
 	<!-- <haxelib name="markdown" /> -->
 	<!-- <haxelib name="HtmlParser" /> -->
 
